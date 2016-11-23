@@ -1,0 +1,54 @@
+{
+  "name": "openwhisk-es6-action",
+  "version": "0.0.1",
+  "description": "Sample OpenWhisk Action with ECMAScript 6, Unit Tests, and Code Coverage",
+  "main": "./src/action/hello-world.js",
+  "scripts": {
+    "start": "babel-watch ./test/server/index.js",
+    "test": "babel-node ./node_modules/.bin/isparta cover _mocha",
+    "test_no_cov": "mocha --compilers js:babel-register",
+    "prepublish": "babel src --out-file ${npm_package_name}-${npm_package_version}.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ddragosd/openwhisk-es6-action.git"
+  },
+  "author": "Dragos Dascalita Haut <ddascal@adobe.com>",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.16.0",
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
+    "babel-plugin-transform-strict-mode": "^6.18.0",
+    "babel-preset-latest": "^6.16.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.5.3",
+    "supertest": "^1.1.0",
+    "supertest-as-promised": "^2.0.2"
+  },
+  "babel": {
+    "presets": [
+      "latest"
+    ],
+    "plugins": [
+      [
+        "transform-strict-mode",
+        {
+          "strict": false
+        }
+      ],
+      "transform-remove-strict-mode"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/ddragosd/openwhisk-es6-action/issues"
+  },
+  "homepage": "https://github.com/ddragosd/openwhisk-es6-action",
+  "keywords": [
+    "serverless, openwhisk, es6-action"
+  ]
+}
