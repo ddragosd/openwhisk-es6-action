@@ -6,6 +6,7 @@ This is a sample OpenWhisk project showing how to write actions using ES6 standa
 It comes with:
  - ES6 support through [Babel](https://babeljs.io)
  - Concatenation logic if the action has multiple files via [Babel](https://babeljs.io) and [Browsify](https://github.com/substack/node-browserify)
+ - Minification with [Babili](https://github.com/babel/babili)
  - Unit Testing support with [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/)
  - Code coverage with [Istanbul](http://gotwarlost.github.io/istanbul/)
  

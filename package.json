@@ -21,6 +21,7 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.16.0",
+    "babel-preset-babili": "0.0.9",
     "babel-preset-latest": "^6.16.0",
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
@@ -37,12 +38,11 @@
       [
         "babelify"
       ]
-    ],
-    "browser":"./src/whisk_loader.js"
+    ]
   },
   "babel": {
     "presets": [
-      "latest"
+      "latest", "babili"
     ]
   },
   "bugs": {
