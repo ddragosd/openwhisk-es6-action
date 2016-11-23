@@ -4,11 +4,11 @@ OpenWhisk Action with ECMAScript6
 This is a sample OpenWhisk action showing how to write actions using ES6 standard.
  
 It comes with:
- - ES6 support via [babel](https://babeljs.io)
+ - ES6 support with [Babel](https://babeljs.io)
  - Unit Testing support with [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/)
  - Code coverage with [Istanbul](http://gotwarlost.github.io/istanbul/)
  
-### Installing
+## Installing
 
  ```bash
  npm install
@@ -18,7 +18,7 @@ It comes with:
  
  The ES6 code for the action is found in [src/action/hello-world.js](src/action/hello-world.js).
  
-### Running the tests locally
+## Running the tests locally
  
  ```bash
   npm test
@@ -48,7 +48,7 @@ Lines        : 100% ( 5/5 )
   ```
   
   
-### Running the action in OpenWhisk
+## Running the action in OpenWhisk
 
 First create the action:
 
