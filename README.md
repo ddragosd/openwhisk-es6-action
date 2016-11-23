@@ -17,12 +17,12 @@ It comes with:
  
  This command installs the node modules and generates the source code for the action at `openwhisk-es6-action-0.0.1.js`.
  
- The ES6 code for the action is found in [src/action/hello-world.js](src/action/hello-world.js) and the other files that are bundled with the code of the action are defined in the [modules](src/modules) folder.
+ The ES6 code for the action is found in [src/action/hello-world.js](src/action/hello-world.js) and the other files are bundled with the code of the action.
   By default only the modules defined in the `src` folder are concatenated. 
   
   The bundle eventually [exposes](package.json#12) the `main` variable/function in order for OpenWhisk to invoke the action correctly:
   ```javascript
-  var main=/**concatenated code**/;
+  var main = require('main-action');
   ```
   
  

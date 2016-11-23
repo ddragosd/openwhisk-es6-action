@@ -1,4 +1,4 @@
-import Echo from '../modules/echo';
+import Echo from './echo';
 
 /**
  * The entry point for the action.
@@ -11,4 +11,5 @@ function main(params) {
     return responder.sayHello(name);
 }
 
-export default main;
+// export default main;
+module.exports = main;

@@ -8,8 +8,8 @@
     "test": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "test_no_cov": "mocha --compilers js:babel-register",
     "prepublish__": "babel src --out-file ${npm_package_name}-${npm_package_version}.js",
-    "prepublish": "browserify ./src/action/hello-world.js  --bare >  bundle.js && npm run whisk_wrapper",
-    "whisk_wrapper": "sed '1s/^/var main=/; $s/;/\\(1\\)\\.default\\;/g' bundle.js > ${npm_package_name}-${npm_package_version}.js && rm bundle.js"
+    "prepublish": "browserify -r ./src/action/hello-world.js:main-action --no-bundle-external > ${npm_package_name}-${npm_package_version}.js && npm run whisk_wrapper",
+    "whisk_wrapper": "echo \"var main = require('main-action');\" >> ${npm_package_name}-${npm_package_version}.js"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,8 @@
       [
         "babelify"
       ]
-    ]
+    ],
+    "browser":"./src/whisk_loader.js"
   },
   "babel": {
     "presets": [
