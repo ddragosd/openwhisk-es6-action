@@ -7,7 +7,9 @@
     "start": "babel-watch ./test/server/index.js",
     "test": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "test_no_cov": "mocha --compilers js:babel-register",
-    "prepublish": "babel src --out-file ${npm_package_name}-${npm_package_version}.js"
+    "prepublish__": "babel src --out-file ${npm_package_name}-${npm_package_version}.js",
+    "prepublish": "browserify ./src/action/hello-world.js  --bare >  bundle.js && npm run whisk_wrapper",
+    "whisk_wrapper": "sed '1s/^/var main=/; $s/;/\\(1\\)\\.default\\;/g' bundle.js > ${npm_package_name}-${npm_package_version}.js && rm bundle.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +21,9 @@
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.16.0",
-    "babel-plugin-transform-remove-strict-mode": "0.0.2",
-    "babel-plugin-transform-strict-mode": "^6.18.0",
     "babel-preset-latest": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "isparta": "^4.0.0",
@@ -30,18 +32,16 @@
     "supertest": "^1.1.0",
     "supertest-as-promised": "^2.0.2"
   },
+  "browserify": {
+    "transform": [
+      [
+        "babelify"
+      ]
+    ]
+  },
   "babel": {
     "presets": [
       "latest"
-    ],
-    "plugins": [
-      [
-        "transform-strict-mode",
-        {
-          "strict": false
-        }
-      ],
-      "transform-remove-strict-mode"
     ]
   },
   "bugs": {
