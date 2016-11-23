@@ -1,10 +1,11 @@
 OpenWhisk Action with ECMAScript6
 ==================================
 
-This is a sample OpenWhisk action showing how to write actions using ES6 standard.
+This is a sample OpenWhisk project showing how to write actions using ES6 standard.
  
 It comes with:
- - ES6 support with [Babel](https://babeljs.io)
+ - ES6 support through [Babel](https://babeljs.io)
+ - Concatenation logic if the action has multiple files via [Babel](https://babeljs.io) and [Browsify](https://github.com/substack/node-browserify)
  - Unit Testing support with [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/)
  - Code coverage with [Istanbul](http://gotwarlost.github.io/istanbul/)
  
@@ -16,7 +17,14 @@ It comes with:
  
  This command installs the node modules and generates the source code for the action at `openwhisk-es6-action-0.0.1.js`.
  
- The ES6 code for the action is found in [src/action/hello-world.js](src/action/hello-world.js).
+ The ES6 code for the action is found in [src/action/hello-world.js](src/action/hello-world.js) and the other files that are bundled with the code of the action are defined in the [modules](src/modules) folder.
+  By default only the modules defined in the `src` folder are concatenated. 
+  
+  The bundle eventually [exposes](package.json#12) the `main` variable/function in order for OpenWhisk to invoke the action correctly:
+  ```javascript
+  var main=/**concatenated code**/;
+  ```
+  
  
 ## Running the tests locally
  
@@ -27,12 +35,12 @@ It comes with:
   Should print 
   
   ```text
- Say hello
+  Say hello
     with name parameter
       ✓ should say Hello, ECAMEscript6
 
 
-  1 passing (7ms)
+  1 passing (8ms)
 
 ================================================================================
 Writing coverage object [/Projects/openwhisk/openwhisk-es6-action/coverage/coverage.json]
@@ -40,10 +48,10 @@ Writing coverage reports at [/Projects/openwhisk/openwhisk-es6-action/coverage]
 ================================================================================
 
 =============================== Coverage summary ===============================
-Statements   : 100% ( 6/6 )
-Branches     : 50% ( 1/2 )
-Functions    : 100% ( 2/2 )
-Lines        : 100% ( 5/5 )
+Statements   : 100% ( 37/37 ), 2 ignored
+Branches     : 93.75% ( 15/16 ), 5 ignored
+Functions    : 100% ( 10/10 )
+Lines        : 100% ( 10/10 )
 ================================================================================
   ```
   
