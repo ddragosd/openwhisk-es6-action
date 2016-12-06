@@ -17,9 +17,7 @@ describe('Say hello', () => {
             // The action returns a Promise and we can use "eventually" to wait for it.
             // If the action doesn't return a Promise we can remove "eventually"
             //   and write instead "should.deep.equal"
-            action(params).should.eventually.deep.equal({payload: "Hello, ECMAscript6!"});
-
-            done();
+            action(params).should.eventually.deep.equal({payload: "Hello, ECMAscript6!"}).notify(done);
         });
     })
 });
