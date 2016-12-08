@@ -9,7 +9,7 @@
     "test_no_cov": "mocha --compilers js:babel-register",
     "prepublish__": "babel src --out-file ${npm_package_name}-${npm_package_version}.js",
     "prepublish": "browserify -r ./src/action/hello-world.js:main-action --no-bundle-external > ${npm_package_name}-${npm_package_version}.js && npm run whisk_wrapper",
-    "whisk_wrapper": "echo \"var main = require('main-action');\" >> ${npm_package_name}-${npm_package_version}.js"
+    "whisk_wrapper": "echo \"var main = require('main-action').default;\" >> ${npm_package_name}-${npm_package_version}.js"
   },
   "repository": {
     "type": "git",

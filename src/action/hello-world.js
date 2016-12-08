@@ -11,5 +11,4 @@ function main(params) {
     return responder.sayHello(name);
 }
 
-// export default main;
-module.exports = main;
+export default main;
